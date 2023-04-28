@@ -13,7 +13,8 @@ gem "devise-bootstrap-views"
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem "stripe"
-
+gem "pay"
+ 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

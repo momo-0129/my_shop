@@ -149,6 +149,8 @@ GEM
     nokogiri (1.14.3-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pay (6.3.3)
+      rails (>= 6.0.0)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -266,6 +268,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  pay
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   redis (~> 4.0)
