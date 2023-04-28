@@ -12,6 +12,8 @@ gem "twitter-bootstrap-rails"
 gem "devise-bootstrap-views"
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
+gem "stripe"
+
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
