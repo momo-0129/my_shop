@@ -10,7 +10,7 @@
       <ul class="nav navbar-nav">
         <li><%= link_to 'Products', products_path %></li>
         <li><%= link_to 'Shoppingcard', products_path %></li>
-        <% if current_user.admin? %>
+        <% if current_user && current_user.admin? %>
           <li><%= link_to 'create new product', new_product_path %></li>
         <% end %>
       </ul>
