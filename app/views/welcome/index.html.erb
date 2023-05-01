@@ -1,8 +1,19 @@
 <div class="jumbotron">
-  <h2>Welcome to My Shop!</h2>
-  <p class="lead">
+  <% if current_user %>
+    <h2>Welcome to My Shop!</h2>
+    <p class="lead">
+    You can find your dream car! 
+    </p>
+  <% else %>
+    <h2>Welcome to My Shop!</h2>
+    <p class="lead">
     You can find your dream car! Sign up!
-  </p>
+    </p>
+  <% end %>
 </div>
-<%= link_to "Manage Billing", @portal_session.url %>
-<%= render "product" %>
+<%
+=begin%>
+ <%= link_to "Manage Billing", @portal_session.url %> 
+<%
+=end%>
+<%= render 'product' %>

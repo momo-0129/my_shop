@@ -1,0 +1,8 @@
+<% if @product.errors.any? %>
+    <h4>The following errors prevented the product from being saved!</h4>
+    <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      
+      <%= form_with(model: @product, class: "shadow p-3 mb-3 bg-info bg-body-tertiary", local: true) do |f| %>
+        <div class="mb-3">
+          <%= f.label :name, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :name, class: "form-control shadow rounded", placeholder: "Title of product" %>
+          </div>
+        </div>
+        <div class="mb-3">
+          <%= f.label :price, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_field :price, class: "form-control shadow rounded", placeholder: "Price of product" %>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :description, class: "col-2 col-form-label text-light" %>
+          <div class="col-10">
+            <%= f.text_area :description, rows: 10, class: "form-control shadow rounded", placeholder: "Description of product" %>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Choose a picture</label>
+          <input class="form-control" type="file" id="formFile">
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.submit class: "btn btn-outline-light btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="mb-3 text-center">
+     <%= link_to '[Cancel and return to product listing]', products_path, class: "text-info"  %> 
+    </div>
+  </div>
+</div>
