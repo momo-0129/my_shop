@@ -7,7 +7,10 @@ class ProductsController < ApplicationController
   end
 
   def show
-    
+  
+  end
+
+  def edit
   end
 
   def new
@@ -23,6 +26,18 @@ class ProductsController < ApplicationController
       render :new, status: :bad_request
     end
   end
+
+  def update
+    if @product.update(product_params)
+      flash[:notice] = "Updated article"
+      redirect_to @product
+    else
+      render :new, status: :bad_request
+    end
+
+  end
+
+
 
   private
 
