@@ -22,10 +22,13 @@
         <div class="card-text">
           <%= number_to_currency @product.price %>
         </div>
-        <% if current_user %>
-        <%= link_to 'Purchase', checkout_path, class: "card-button" %> 
+        <% if current_user && !current_user.admin %>
+          <%= link_to 'Purchase', checkout_path, class: "card-button" %> 
+        <% elsif current_user.admin %>
+          <%= link_to "Edit", edit_product_path(@product), class: "edit-button" %>
+          <%= link_to "Delete", product_path(@product), method: :delete, data: {confirm: "Are you sure?"} , class: "card-button" %>
         <% else %>
-        <%= link_to 'Singup & Purchase', new_user_registration_path, class: "card-button" %>
+          <%= link_to 'Singup & Purchase', new_user_registration_path, class: "card-button" %>
         <% end %>
       </div>
     </div>

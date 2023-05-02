@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'welcome#index'
+  root 'products#index'
 
   get 'checkout', to: 'checkouts#show'
   get 'checkout/success', to: 'checkouts#success'
