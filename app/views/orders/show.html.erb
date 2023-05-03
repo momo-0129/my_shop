@@ -1,0 +1,15 @@
+<h1>Orders#show</h1>
+<p>Find me in app/views/orders/show.html.erb</p>
+
+
+
+  <p>Name: <%= @order.name %></p>
+  <p>Email: <%= @order.email %></p>
+  <p>Line Items: </p>
+  <ul>
+    <% @order.line_items.each do |item| %>
+      <%= image_tag item.product.avatar.variant(:medium) %>
+    <li><%= item.quantity %> x <%= item.product.name %></li>
+    <% end %>
+  </ul>
+
