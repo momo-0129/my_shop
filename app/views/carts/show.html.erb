@@ -15,10 +15,18 @@
   <% end %>
 </h3>
 <h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
-<%= link_to "Proceed to checkout", new_order_path %></br>
 
 <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
 
 </br>
-
+</br>
 <%= link_to 'Continue shopping', products_path %>
+
+</br>
+</br>
+
+
+</br>
+</br>
+
+<%= render partial: "pay/stripe/checkout_button", locals: { session: @checkout_session, title: "Purchase"} %>

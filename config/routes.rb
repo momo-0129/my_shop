@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   # get 'carts/show'
   devise_for :users
   root 'products#index'
+  
 
-  get 'checkout', to: 'checkouts#show'
   get 'checkout/success', to: 'checkouts#success'
   get 'billing', to: 'billing#show'
-
+  
   resources :products
   resources :orders
   
