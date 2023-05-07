@@ -1,21 +1,42 @@
 class CheckoutsController < ApplicationController
   before_action :authenticate_user!
 
-  def show
-    current_user.set_payment_processor :stripe
-    current_user.payment_processor.customer   
-
-    @checkout_session = current_user.payment_processor.checkout(  
-      mode: "payment",
-      line_items: "price_1N1rAEI5HQuZLMrkQohHlbmk",
+  def create
+    @cart = @current_cart
+    @price = Stripe::Price.create(currency: 'USD', unit_amount: @cart.sub_total.to_i * 100, product_data: {
+      name: "contants of the cars"
+    })
+    @session = Stripe::Checkout::Session.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        price: @price,
+        quantity: 1
+      }],
+      shipping_address_collection: {
+        allowed_countries: ['JP']
+      },
+      phone_number_collection: {
+        enabled: true,
+      },
+      mode: 'payment',
       success_url: checkout_success_url,
-    )
+      cancel_url: root_url,
+    })
+    redirect_to @session.url, allow_other_host: true
   end
 
-  def success 
-    @session = Stripe::Checkout::Session.retrieve(params[:session_id])
-    @line_items = Stripe::Checkout::Session.list_line_items(params[:session_id])
+  def success
+    session[:cart_id] = nil
+
+    
   end
+  
+  def cancel
+    # not empty out cart, but do something
+  end
+
+  
 
  
 end
+ 

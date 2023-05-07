@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   devise_for :users
   root 'products#index'
   
-
+  post 'checkout/create', to: "checkouts#create"
   get 'checkout/success', to: 'checkouts#success'
   get 'billing', to: 'billing#show'
   
   resources :products
   resources :orders
-  
+
   get 'carts/:id' => "carts#show", as: "cart"
   delete 'carts/:id' => "carts#destroy"
 

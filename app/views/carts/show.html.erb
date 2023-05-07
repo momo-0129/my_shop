@@ -1,7 +1,7 @@
 <h2>Cart show</h2>
 <h3>
   <% @cart.line_items.each do |line_item| %>
-    <%= image_tag line_item.product.avatar.variant(:medium) %>
+    <%= image_tag line_item.product.avatar.variant(:thumb) %>
     <li>Item: <%= line_item.product.name %>/ Price: <%= number_to_currency(line_item.product.price) %>/ Quantity: <%= line_item.quantity %>/ Total Price: <%= number_to_currency(line_item.total_price) %></li>
     <ul>
       <li>
@@ -29,4 +29,4 @@
 </br>
 </br>
 
-<%= render partial: "pay/stripe/checkout_button", locals: { session: @checkout_session, title: "Purchase"} %>
+<%= button_to "Buy now!", checkout_create_path, params: {id: @cart.id}, data: { turbolinks: 'false'} %>

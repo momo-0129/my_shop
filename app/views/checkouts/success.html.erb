@@ -1,12 +1,2 @@
 <h1>Success!</h1>
 <h1>Thank You!</h1>
-
-<h2>You total was ¥<%= @session.amount_total.to_f %></h2>
-
-  <% @line_items.each do |item| %>
-    <h3><%= item.description %></h3>
-
-    <p>$<%= item.price.unit_amount.to_f %></p>
-    <% product = Stripe::Product.retrieve(item.price.product) %>
-    <%= image_tag(product.images.first, width: 300) %>
-  <% end %>
