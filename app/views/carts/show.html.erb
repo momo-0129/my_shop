@@ -1,5 +1,10 @@
-<h2>Cart show</h2>
+<h2>My shopping card</h2>
 <h3>
+<% if @cart.line_items.size == 0 %>
+   <p>
+    There are no items in your shopping cart. Please <%= link_to "go back", root_path %> and add some items to your cart.
+  </p>
+<% else %>
   <% @cart.line_items.each do |line_item| %>
     <%= image_tag line_item.product.avatar.variant(:thumb) %>
     <li>Item: <%= line_item.product.name %>/ Price: <%= number_to_currency(line_item.product.price) %>/ Quantity: <%= line_item.quantity %>/ Total Price: <%= number_to_currency(line_item.total_price) %></li>
@@ -24,9 +29,8 @@
 
 </br>
 </br>
-
-
 </br>
 </br>
 
 <%= button_to "Buy now!", checkout_create_path, params: {id: @cart.id}, data: { turbolinks: 'false'} %>
+<% end %>
